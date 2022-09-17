@@ -18,6 +18,11 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
+  # Remove if you wish to disable unfree packages for your system
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -35,11 +40,6 @@
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
     };
-  };
-
-  # Remove if you wish to disable unfree packages for your system
-  nixpkgs.config = {
-    allowUnfree = true;
   };
 
   # Bootloader.
@@ -155,6 +155,7 @@
     xclip
     nssTools
     gnome.gnome-tweaks
+    home-manager
   ];
 
   fonts.fonts = with pkgs; [

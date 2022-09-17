@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  progams.git = {
+  programs.git = {
     enable = true;
 
     aliases = {
@@ -18,10 +18,6 @@
       enable = true;
     };
 
-    difftastic = {
-      enable = true;
-    };
-
     ignores = ["*~" "*.swp"];
 
     signing = {
@@ -30,5 +26,5 @@
     };
 
     userEmail = "aodhan.hayter@gmail.com";
-  }
+  };
 }
