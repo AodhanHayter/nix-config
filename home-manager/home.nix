@@ -35,7 +35,6 @@
     steam
     openvpn_24
     ripgrep
-    pgcli
     mkcert
     openrgb
     slack
