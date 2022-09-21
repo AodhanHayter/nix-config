@@ -16,9 +16,6 @@
 
   # Comment out if you wish to disable unfree packages for your system
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify"
-  ];
 
   # TODO: Set your username
   home = {
