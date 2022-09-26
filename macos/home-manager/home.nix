@@ -22,7 +22,6 @@
   };
 
   home.packages = with pkgs; [
-    spotify
     pass
     ripgrep
     mkcert
