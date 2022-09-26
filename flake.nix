@@ -40,7 +40,7 @@
 
     darwinConfigurations = {
       "ash" = darwin.lib.darwinSystem {
-        system = legacyPackages.aarch64-darwin;
+        pkgs = legacyPackages.aarch64-darwin;
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./macos/configuration.nix ];
       };
