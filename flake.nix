@@ -57,7 +57,7 @@
 
         "ahayter@ash" = home-manager.lib.homeManagerConfiguration {
           pkgs = legacyPackages.aarch64-darwin;
-          specialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
           modules = [ ./macos/home-manager/home.nix ];
         };
     };
