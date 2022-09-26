@@ -7,6 +7,7 @@
     # inputs.nix-colors.homeManagerModule
 
     # Feel free to split up your configuration and import pieces of it here.
+    ./xmonad.nix
     ./git.nix
     ./tmux.nix
     ./nvim.nix
