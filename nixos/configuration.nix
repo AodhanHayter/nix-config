@@ -120,6 +120,10 @@
     Defaults:aodhan timestamp_timeout=30
   '';
 
+  programs.ssh = {
+    startAgent = true;
+  };
+
   users.defaultUserShell = pkgs.zsh;
 
   users.users = {

@@ -10,11 +10,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Nix Darwin
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # TODO: Add any other flake you might need
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: rec {
-    legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin"] (system:
+  outputs = { nixpkgs, home-manager, darwin, ... }@inputs: rec {
+    legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin"] (system:
       import inputs.nixpkgs {
         inherit system;
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
@@ -34,6 +38,14 @@
       };
     };
 
+    darwinConfigurations = {
+      "ash" = darwin.lib.darwinSystem {
+        system = legacyPackages.aarch64-darwin;
+        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ ./macos/configuration.nix ];
+      };
+    };
+
     homeConfigurations = {
       "aodhan@nixos" =
         home-manager.lib.homeManagerConfiguration {
@@ -41,6 +53,12 @@
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ ./home-manager/home.nix ];
+        };
+
+        "ahayter@ash" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages.aarch64-darwin;
+          specialArgs = { inherit inputs; };
+          modules = [ ./macos/home-manager/home.nix ];
         };
     };
   };
