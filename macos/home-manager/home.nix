@@ -7,6 +7,7 @@
     # inputs.nix-colors.homeManagerModule
 
     # Feel free to split up your configuration and import pieces of it here.
+    ../../home-manager/common.nix
     ../../home-manager/git.nix
     ../../home-manager/tmux.nix
     ../../home-manager/nvim.nix
@@ -22,11 +23,41 @@
   };
 
   home.packages = with pkgs; [
-    pass
+    prettyping
     ripgrep
     mkcert
     (nodejs-16_x.override { enableNpm = true; })
+    karabiner-elements
+    rnix-lsp
+    jid
+    htop
+    shfmt
+    shellcheck
+    tree
+    httpie
+    jq
   ];
+
+  home.activation = lib.mkIf pkgs.stdenv.isDarwin {
+      copyApplications = let
+        apps = pkgs.buildEnv {
+          name = "home-manager-applications";
+          paths = config.home.packages;
+          pathsToLink = "/Applications";
+        };
+      in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        baseDir="$HOME/Applications/Home Manager Apps"
+        if [ -d "$baseDir" ]; then
+          rm -rf "$baseDir"
+        fi
+        mkdir -p "$baseDir"
+        for appFile in ${apps}/Applications/*; do
+          target="$baseDir/$(basename "$appFile")"
+          $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+          $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+        done
+      '';
+      };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -37,7 +68,4 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
