@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ...}: {
+{ inputs, lib, config, pkgs, ... }: {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
@@ -22,30 +22,37 @@
     homeDirectory = "/Users/ahayter";
   };
 
+  home.shellAliases = {
+    hm = "home-manager switch --flake ~/nix-config#aodhan@ash";
+  };
+
   home.packages = with pkgs; [
+    (nodejs-16_x.override { enableNpm = true; })
+    htop
+    httpie
+    jid
+    jq
+    karabiner-elements
+    mkcert
     prettyping
     ripgrep
-    mkcert
-    (nodejs-16_x.override { enableNpm = true; })
-    karabiner-elements
     rnix-lsp
-    jid
-    htop
-    shfmt
     shellcheck
+    shfmt
     tree
-    httpie
-    jq
+    tealdeer
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {
-      copyApplications = let
+    copyApplications =
+      let
         apps = pkgs.buildEnv {
           name = "home-manager-applications";
           paths = config.home.packages;
           pathsToLink = "/Applications";
         };
-      in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         baseDir="$HOME/Applications/Home Manager Apps"
         if [ -d "$baseDir" ]; then
           rm -rf "$baseDir"
@@ -57,7 +64,7 @@
           $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
         done
       '';
-      };
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

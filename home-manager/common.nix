@@ -18,6 +18,20 @@
 
   };
 
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv = {
+      enable = true;
+    };
+  };
+
+
   programs.exa = {
     enable = true;
   };

@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ...}: {
+{ inputs, lib, config, pkgs, ... }: {
   environment.systemPackages = [
     pkgs.vim
   ];
@@ -9,8 +9,13 @@
   fonts = with pkgs; {
     fontDir.enable = true;
     fonts = [
-      (nerdfonts.override { fonts = ["FiraCode"]; })
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
+  };
+
+  homebrew = {
+    enable = true;
+    casks = [ "amethyst" "raycast" "spotify" "brave-browser" ];
   };
 
   system.activationScripts.applications.text = pkgs.lib.mkForce (

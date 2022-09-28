@@ -18,7 +18,7 @@
       enable = true;
     };
 
-    ignores = ["*~" "*.swp"];
+    ignores = ["*~" "*.swp" "aodhanlocal"];
 
     signing = {
       key = "3FBACD0B82D05567FC1BB765FD58CC579E91D1C5";
