@@ -23,7 +23,8 @@
   };
 
   home.shellAliases = {
-    hm = "home-manager switch --flake ~/nix-config#aodhan@ash";
+    hm = "home-manager switch --flake \"/Users/ahayter/nix-config#ahayter@ash\"";
+    nvm = "fnm";
   };
 
   home.packages = with pkgs; [
@@ -41,6 +42,7 @@
     shfmt
     tree
     tealdeer
+    fnm
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {

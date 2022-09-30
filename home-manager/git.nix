@@ -18,7 +18,37 @@
       enable = true;
     };
 
-    ignores = ["*~" "*.swp" "aodhanlocal"];
+    ignores = [
+      "*~"
+      "*.swp"
+      # linux stuff
+      ".fuse_hidden*"
+      ".directory"
+      ".Trash-*"
+      ".nfs*"
+      # macos stuff
+      ".DS_Store"
+      ".AppleDouble"
+      ".LSOverride"
+      "._*"
+      ".DocumentRevisions-V100"
+      ".fseventsd"
+      ".TemporaryItems"
+      ".Trashes"
+      ".VolumeIcon.icns"
+      ".com.apple.timemachine.donotpresent"
+      ".AppleDB"
+      ".AppleDesktop"
+      "Network Trash Folder"
+      "Temporary Items"
+      ".apdisk"
+      # gpg
+      "secring.*"
+      # development stuff
+      "aodhanlocal"
+      ".envrc"
+      ".direnv"
+    ];
 
     signing = {
       key = "3FBACD0B82D05567FC1BB765FD58CC579E91D1C5";

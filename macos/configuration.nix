@@ -15,7 +15,13 @@
 
   homebrew = {
     enable = true;
-    casks = [ "amethyst" "raycast" "spotify" "brave-browser" ];
+    casks = [
+      "amethyst"
+      "raycast"
+      "spotify"
+      "brave-browser"
+      "itsycal"
+    ];
   };
 
   system.activationScripts.applications.text = pkgs.lib.mkForce (
