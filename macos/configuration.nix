@@ -24,6 +24,17 @@
     ];
   };
 
+  system.defaults = {
+    screencapture.location = "~/Desktop/screen-shots";
+    NSGlobalDomain = {
+      AppleInterfaceStyle = "Dark";
+      AppleShowAllFiles = true;
+      AppleShowScrollBars = "WhenScrolling";
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
+    };
+  };
+
   system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
       echo "setting up ~/Applications..." >&2

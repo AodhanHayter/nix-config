@@ -46,8 +46,6 @@
       "secring.*"
       # development stuff
       "aodhanlocal"
-      ".envrc"
-      ".direnv"
     ];
 
     signing = {

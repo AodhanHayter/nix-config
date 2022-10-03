@@ -22,7 +22,7 @@ map('n', '<leader>rn', '<Plug>(coc-rename)', {})
 map('n', '<leader>st', ':call CocAction("doHover")<cr>', options)
 map('n', '<leader>qf', '<Plug>(coc-fix-current)', {})
 
-cmd('command! -nargs=0 Format :call CocAction("format")')
+cmd('command! -nargs=0 Format :call CocActionAsync("format")')
 map('n', '<leader>af', ':Format<cr>', options)
 
 -- file tree
