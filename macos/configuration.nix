@@ -15,6 +15,7 @@
 
   homebrew = {
     enable = true;
+    brews = [ "pgcli" ];
     casks = [
       "amethyst"
       "raycast"

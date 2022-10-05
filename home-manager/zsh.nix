@@ -60,6 +60,14 @@
         session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
       }
 
+      function pg() {
+        if [ $1 ]; then
+          PGSERVICE=$1 /opt/homebrew/Cellar/pgcli/3.5.0/bin/pgcli
+        else
+          echo 'A valid service name is required for this function'
+        fi
+      }
+
       [ -n "$(command -v fnm)" ] && eval "$(fnm env --use-on-cd)"
     '';
 
