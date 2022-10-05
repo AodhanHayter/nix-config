@@ -4,6 +4,7 @@
     settings = {
       custom_cursor_colors = true;
       font = {
+        size = 14;
         normal = {
           family = "FiraCode Nerd Font";
         };

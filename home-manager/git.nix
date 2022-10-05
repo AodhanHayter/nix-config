@@ -3,7 +3,7 @@
     enable = true;
 
     aliases = {
-      sync = "!sh -c 'git fetch origin \"$0\":\"$0\"";
+      sync = "!sh -c 'git fetch origin \"$0\":\"$0\"'";
       prune = "fetch --prune";
       undo = "reset --soft HEAD^";
       stash-all = "stash save --include-untracked";
