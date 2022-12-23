@@ -134,7 +134,7 @@
       openssh = {
         authorizedKeys = {
           keys = [
-            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXblNEOpp/wP3SsPhv71Loflz8yndggM64DzMc+mNvFsbjPwYLJucYwL1bbL3BqgR9vAZyoNmp/Jp7CPhxY7O6Yf4yiTLNCsMAfR7d9XfKkMnbDrN+9zoUIw9oKsU9+k7mar7riYIIOQfumSMuuOxfAWJuk8Ai7maeC03UpLFZGZcC/JKuSgQRpkqDsYJaEZ+7r8cwxK7B0zaj8j6mMrwmMD9WWJDivMSOpZYSmIa2dENKF9vawXiWa7NiRDukrqW/rfxr3+HY4o7V3ql0jHt72+WZ/iXf3iyc0kkndEakI97VlqITNkpdcsC+ujj7erRFpL4RQXKg2KDQjhcFBC5WKL5xhQVm1Wjdum21ddoD4kMvbOC7ctaSY5bPAyLuxJKQxOlfvBY/PrIIIF+BJDKmCC3NERtcWlfNbPfMUzw7/z+dYdnk8IFMIcwQM+shdjCSzxQDZ7puM9k+vmY0OwlZrWawa8kLitFa6rql3/tybGhjwaXQByLcv/IMwyBkcl3XOqOiiVGXyqRCqd+1NUMKXGbHBO31XcZQJto2iT+D0nzDAswvWu8Ca+GOXw6+C1ofiwXRzJQ/MsHh9DL0QGYzcUrkP4eZiSaan2WABrXOYQ3beMkd6zBq7n3TDeWtfK3CPqYDIx8PqNIn3rFiMoJdBm6LYEM5GxQjnpWbd3/u5Q== kyruus macbookpro"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnEsBv5zrOZzeQSymd/WKottg28l0mav/J0m0/Q3E4X aodhan.hayter@gmail.com"
           ];
         };
       };
