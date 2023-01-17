@@ -57,6 +57,8 @@ cmd([[
 
 -- globals
 -----------
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- autocomplete
 -- vim.g.coq_settings = {

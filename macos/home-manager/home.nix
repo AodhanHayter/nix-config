@@ -43,6 +43,11 @@
     tree
     tealdeer
     fnm
+    saml2aws
+    awscli
+    postgresql_12
+    docker
+    passExtensions.pass-update
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {

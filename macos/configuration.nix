@@ -15,13 +15,15 @@
 
   homebrew = {
     enable = true;
-    brews = [ "pgcli" ];
+    brews = [ "pgcli" "pyenv" "pyenv-virtualenv" "libpq" "openssl" ];
     casks = [
       "amethyst"
       "raycast"
       "spotify"
       "brave-browser"
       "itsycal"
+      "docker"
+      "adur1990/tap/passformacos"
     ];
   };
 

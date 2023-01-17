@@ -54,5 +54,9 @@
     };
 
     userEmail = "aodhan.hayter@gmail.com";
+
+    extraConfig = {
+      add.interactive.useBuiltin = false;
+    };
   };
 }

@@ -56,14 +56,22 @@ return require('packer').startup(function(use)
 
   -- file explorer
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require('nvim-tree').setup({}) end
+    'nvim-tree/nvim-tree.lua',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function() require('nvim-tree').setup() end,
+    tag = 'nightly'
+
   }
 
   -- fuzzy finder
   use { 'nvim-telescope/telescope.nvim',
     requires = {{ 'nvim-lua/plenary.nvim'}}
+  }
+
+  -- browser integration
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
   }
 
   -- git
@@ -89,10 +97,7 @@ return require('packer').startup(function(use)
 
   -- markdown
   use 'ellisonleao/glow.nvim'
-
-
- -- R
- use { 'jalvesaq/Nvim-R', branch = 'stable' }
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
    -- } language server
  use { 'neoclide/coc.nvim', branch = 'release'}

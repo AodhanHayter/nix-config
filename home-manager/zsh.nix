@@ -13,6 +13,22 @@
       export VISUAL="nvim"
       export PAGER="less"
       export GPG_TTY=$(tty)
+
+      # allow homebrew packages to be run
+      export PATH="$PATH:/opt/homebrew/bin"
+
+      # pyenv stuff
+      export PYENV_ROOT="$HOME/.pyenv"
+      if command -v pyenv 1>/dev/null 2>&1; then
+        export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+      fi
+
+      if [ $(uname) = "Darwin" ]
+      then
+        export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+      fi
     '';
 
     prezto = {
@@ -69,6 +85,10 @@
       }
 
       [ -n "$(command -v fnm)" ] && eval "$(fnm env --use-on-cd)"
+
+      function aws_login() {
+        saml2aws login --session-duration 43200 --username "ahayter@kyruus.com" --duo-mfa-option="Duo Push" --skip-prompt --force --role="arn:aws:iam::206670668379:role/kyruusone-engineer"
+      }
     '';
 
     plugins = [
