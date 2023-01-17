@@ -61,11 +61,16 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.windowManager.xmonad.enable = true;
 
-  # Enable the Pantheon Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.pantheon.enable = true;
+  # Enable the Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager = {
+    plasma5 = {
+      enable = true;
+    };
+  };
+
   services.xserver.videoDrivers = ["nvidia"];
 
   # Enable gnome keyring
@@ -73,6 +78,8 @@
 
   # flatpak
   services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
 
   systemd.services.ssh-no-sleep = {
     enable = true;
@@ -97,6 +104,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # bluetooth
+  hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -130,7 +140,7 @@
     aodhan = {
       isNormalUser = true;
       description = "Aodhan Hayter";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
       openssh = {
         authorizedKeys = {
           keys = [
@@ -159,11 +169,16 @@
     nssTools
     gnome.gnome-tweaks
     home-manager
+    cachix
+    flyctl
+    libsForQt514.kdeconnect-kde
   ];
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["FiraCode"]; })
   ];
+
+  virtualisation.docker.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

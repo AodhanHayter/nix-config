@@ -8,12 +8,14 @@
 
     # Feel free to split up your configuration and import pieces of it here.
     ./common.nix
-    ./xmonad.nix
+    # ./xmonad
     ./git.nix
     ./tmux.nix
     ./nvim.nix
     ./alacritty.nix
     ./zsh.nix
+    # ./rofi
+    # ./dunst.nix
   ];
 
   # Comment out if you wish to disable unfree packages for your system
