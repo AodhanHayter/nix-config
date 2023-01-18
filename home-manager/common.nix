@@ -59,6 +59,7 @@
       git_protocol = "https";
       prompt = "enabled";
     };
+  };
 
   programs.obs-studio = {
     enable = true;

@@ -95,6 +95,21 @@
     };
   };
 
+  systemd.services.combine-ctrl-escape = {
+    enable = true;
+    description = "Combine Ctrl+Escape use the xcape program";
+    documentation = ["man:xcape(1)" "https://github.com/alols/xcape"];
+    after = ["graphical.target"];
+
+    serviceConfig = {
+      Type = "forking";
+      ExecStart = ''${pkgs.xcape}/bin/xcape -e "Control_L=Escape"'';
+      Restart = "always";
+    };
+
+    wantedBy = ["graphical.target"];
+  };
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -171,7 +186,6 @@
     home-manager
     cachix
     flyctl
-    libsForQt514.kdeconnect-kde
   ];
 
   fonts.fonts = with pkgs; [
