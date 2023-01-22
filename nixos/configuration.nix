@@ -95,26 +95,30 @@
     };
   };
 
-  systemd.services.combine-ctrl-escape = {
+  # Capslock as Control + Escape everywhere
+  services.interception-tools = let
+    dfkConfig = pkgs.writeText "dual-function-keys.yaml" ''
+      MAPPINGS:
+        - KEY: KEY_CAPSLOCK
+          TAP: KEY_ESC
+          HOLD: KEY_LEFTCTRL
+    '';
+  in {
     enable = true;
-    description = "Combine Ctrl+Escape use the xcape program";
-    documentation = ["man:xcape(1)" "https://github.com/alols/xcape"];
-    after = ["graphical.target"];
-
-    serviceConfig = {
-      Type = "forking";
-      ExecStart = ''${pkgs.xcape}/bin/xcape -e "Control_L=Escape"'';
-      Restart = "always";
-    };
-
-    wantedBy = ["graphical.target"];
+    plugins = lib.mkForce [pkgs.interception-tools-plugins.dual-function-keys];
+    udevmonConfig = ''
+      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.dual-function-keys}/bin/dual-function-keys -c ${dfkConfig} | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+        DEVICE:
+          NAME: "Unicomp Inc Unicomp R7_2_Mac_10x_Kbrd_v7_47"
+          EVENTS:
+            EV_KEY: [[KEY_CAPSLOCK, KEY_ESC, KEY_LEFTCTRL]]
+    '';
   };
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
-    xkbOptions = "ctrl:nocaps";
   };
 
   # Enable CUPS to print documents.
