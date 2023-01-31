@@ -60,8 +60,4 @@
       prompt = "enabled";
     };
   };
-
-  programs.obs-studio = {
-    enable = true;
-  };
 }

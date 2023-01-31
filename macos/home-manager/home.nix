@@ -48,6 +48,9 @@
     postgresql_12
     docker
     passExtensions.pass-update
+    darwin.apple_sdk.frameworks.CoreFoundation
+    darwin.apple_sdk.frameworks.CoreServices
+    circleci-cli
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {
