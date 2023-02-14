@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
 
   use 'tmhedberg/matchit'
   use 'tpope/vim-surround'
+  use 'tpope/vim-endwise'
 
 
   -- file explorer

@@ -159,7 +159,7 @@
     aodhan = {
       isNormalUser = true;
       description = "Aodhan Hayter";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "sudo" "docker" ];
       openssh = {
         authorizedKeys = {
           keys = [
@@ -190,6 +190,7 @@
     home-manager
     cachix
     flyctl
+    pkgs.libsForQt5.bismuth
   ];
 
   fonts.fonts = with pkgs; [

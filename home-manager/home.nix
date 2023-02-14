@@ -40,6 +40,7 @@
     (nodejs-16_x.override { enableNpm = true; })
     prettyping
     rnix-lsp
+    lm_sensors
   ];
 
   home.shellAliases = {
