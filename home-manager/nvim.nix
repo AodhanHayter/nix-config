@@ -11,7 +11,7 @@
         lua << EOF
         ${lib.strings.fileContents ../dotfiles/nvim/lua/settings.lua}
         ${lib.strings.fileContents ../dotfiles/nvim/lua/maps.lua}
-        ${lib.strings.fileContents ../dotfiles/nvim/lua/plugins.lua}
+        ${lib.strings.fileContents ../dotfiles/nvim/lua/plugins-lazy.lua}
         EOF
       '';
   };

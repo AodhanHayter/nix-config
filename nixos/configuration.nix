@@ -145,9 +145,22 @@
   };
 
   # sudo settings
-  security.sudo.extraConfig = ''
-    Defaults:aodhan timestamp_timeout=30
-  '';
+  security.sudo = {
+    extraRules = [
+      {
+        users = [ "aodhan" ];
+        commands = [
+          {
+            command = "ALL";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
+    extraConfig = ''
+     Defaults:aodhan timestamp_timeout=30
+    '';
+};
 
   programs.ssh = {
     startAgent = true;
@@ -191,6 +204,8 @@
     cachix
     flyctl
     pkgs.libsForQt5.bismuth
+    gcc_multi
+    binutils
   ];
 
   fonts.fonts = with pkgs; [

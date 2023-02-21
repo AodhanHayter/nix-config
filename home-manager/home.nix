@@ -41,6 +41,7 @@
     prettyping
     rnix-lsp
     lm_sensors
+    nodePackages.typescript-language-server
   ];
 
   home.shellAliases = {
