@@ -23,7 +23,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
 opt.undofile = true
-opt.listchars = { tab = '>~', trail = '·'}
+opt.listchars = { tab = '>~', trail = '·' }
 
 -- window-local options
 wo.number = true
@@ -94,12 +94,12 @@ vim.g.ale_disable_lsp = 1
 vim.g.ale_completion_enabled = 0
 vim.g.ale_javascript_prettier_options = '--prose-wrap always'
 vim.g.ale_fixers = {
-  html = {'prettier'},
-  css = {'prettier'},
-  javascript = {'prettier'},
-  less = {'prettier'},
-  markdown = {'prettier'},
-  typescript = {'prettier'},
-  typescriptreact = {'prettier'},
-  sql = {'pgformatter'}
-  }
+  html = { 'prettier' },
+  css = { 'prettier' },
+  javascript = { 'prettier' },
+  less = { 'prettier' },
+  markdown = { 'prettier' },
+  typescript = { 'prettier' },
+  typescriptreact = { 'prettier' },
+  sql = { 'pgformatter' }
+}

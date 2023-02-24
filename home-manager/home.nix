@@ -42,6 +42,8 @@
     rnix-lsp
     lm_sensors
     nodePackages.typescript-language-server
+    sumneko-lua-language-server
+    elixir_ls
   ];
 
   home.shellAliases = {
