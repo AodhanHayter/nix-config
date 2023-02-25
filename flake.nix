@@ -18,7 +18,7 @@
   };
 
   outputs = { nixpkgs, home-manager, darwin, ... }@inputs: rec {
-    legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin"] (system:
+    legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ] (system:
       import inputs.nixpkgs {
         inherit system;
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
@@ -39,7 +39,7 @@
     };
 
     darwinConfigurations = {
-      "ash" = darwin.lib.darwinSystem {
+      "ahayter-mbp" = darwin.lib.darwinSystem {
         pkgs = legacyPackages.aarch64-darwin;
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./macos/configuration.nix ];
@@ -55,11 +55,11 @@
           modules = [ ./home-manager/home.nix ];
         };
 
-        "ahayter@ash" = home-manager.lib.homeManagerConfiguration {
-          pkgs = legacyPackages.aarch64-darwin;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./macos/home-manager/home.nix ];
-        };
+      "ahayter@ahayter-mbp" = home-manager.lib.homeManagerConfiguration {
+        pkgs = legacyPackages.aarch64-darwin;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./macos/home-manager/home.nix ];
+      };
     };
   };
 }

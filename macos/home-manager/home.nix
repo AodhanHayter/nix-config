@@ -23,7 +23,8 @@
   };
 
   home.shellAliases = {
-    hm = "home-manager switch --flake \"/Users/ahayter/nix-config#ahayter@ash\"";
+    hm = "home-manager switch -b backup --flake $NIX_CONFIG_PATH";
+    rebuild = "darwin-rebuild switch --flake $NIX_CONFIG_PATH";
     nvm = "fnm";
   };
 
@@ -45,6 +46,7 @@
     fnm
     saml2aws
     awscli
+    ssm-session-manager-plugin
     postgresql_12
     docker
     passExtensions.pass-update
