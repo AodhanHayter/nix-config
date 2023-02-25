@@ -58,6 +58,8 @@
     settings = {
       git_protocol = "https";
       prompt = "enabled";
+      editor = "vim";
+      pager = "less";
     };
   };
 }

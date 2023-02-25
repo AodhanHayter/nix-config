@@ -28,7 +28,7 @@
   };
 
   system.defaults = {
-    screencapture.location = "~/Desktop/screen-shots";
+    screencapture.location = "$HOME/Desktop/screenshots";
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       AppleShowAllFiles = true;
