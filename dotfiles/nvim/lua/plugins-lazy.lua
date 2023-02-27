@@ -19,6 +19,7 @@ require("lazy").setup({
   {
     "trevordmiller/nova-vim",
     priority = 1000,
+    lazy = false,
     config = function()
       vim.cmd([[colorscheme nova]])
       vim.cmd([[highlight clear SignColumn]])
@@ -124,7 +125,10 @@ require('lspconfig')['tsserver'].setup {
 }
 
 require('lspconfig')['elixirls'].setup {
-  cmd = { "elixir-ls" }
+  cmd = { "elixir-ls" },
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
 }
 
 require('lspconfig')['lua_ls'].setup {
@@ -144,4 +148,16 @@ require('lspconfig')['lua_ls'].setup {
       }
     }
   }
+}
+
+require('lspconfig')['bashls'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require('lspconfig')['rnix'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
 }

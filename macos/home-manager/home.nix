@@ -53,6 +53,11 @@
     darwin.apple_sdk.frameworks.CoreFoundation
     darwin.apple_sdk.frameworks.CoreServices
     circleci-cli
+    marksman
+    nodePackages.typescript-language-server
+    nodePackages.bash-language-server
+    sumneko-lua-language-server
+    elixir_ls
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {
