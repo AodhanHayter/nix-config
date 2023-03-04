@@ -34,6 +34,7 @@ require("lazy").setup({
   { "norcalli/nvim-colorizer.lua", lazy = false, config = true },
   { "junegunn/vim-slash", lazy = false },
   { "sheerun/vim-polyglot", lazy = false },
+  { "lithammer/nvim-diagnosticls", lazy = false },
   {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
@@ -200,4 +201,32 @@ require('lspconfig')['rnix'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
+}
+
+require('lspconfig')['marksman'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+local diagnosticls = require("diagnosticls")
+require('lspconfig')['diagnosticls'].setup {
+  filetypes = {unpack(diagnosticls.filetypes)},
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  init_options = {
+    formatters = diagnosticls.formatters,
+    filetypes = {
+      typescript = "eslint",
+      sh = "shellcheck"
+    },
+    formatFiletypes = {
+      javascript = "prettier",
+      javascriptreact = "prettier",
+      typescript = "prettier",
+      typescriptreact = "prettier",
+      markdown = "prettier",
+    }
+  }
 }

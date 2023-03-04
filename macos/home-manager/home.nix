@@ -56,6 +56,7 @@
     marksman
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
+    nodePackages.diagnostic-languageserver
     sumneko-lua-language-server
     elixir_ls
   ];
