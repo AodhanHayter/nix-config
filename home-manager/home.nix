@@ -32,7 +32,6 @@
     spotify
     zoom-us
     steam
-    openvpn_24
     ripgrep
     mkcert
     openrgb
@@ -47,7 +46,8 @@
   ];
 
   home.shellAliases = {
-    update = "sudo nixos-rebuild switch";
+    hm = "home-manager switch --flake $NIX_CONFIG_PATH";
+    rebuild = "sudo nixos-rebuild switch --flake $NIX_CONFIG_PATH";
   };
 
   services.gpg-agent = {

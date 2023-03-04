@@ -71,7 +71,7 @@
     };
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable gnome keyring
   services.gnome.gnome-keyring.enable = true;
@@ -84,8 +84,8 @@
   systemd.services.ssh-no-sleep = {
     enable = true;
     description = "Disable machine sleep when there is an active ssh session";
-    before = ["sleep.target"];
-    requiredBy = ["sleep.target"];
+    before = [ "sleep.target" ];
+    requiredBy = [ "sleep.target" ];
 
     serviceConfig = {
       Type = "oneshot";
@@ -96,24 +96,26 @@
   };
 
   # Capslock as Control + Escape everywhere
-  services.interception-tools = let
-    dfkConfig = pkgs.writeText "dual-function-keys.yaml" ''
-      MAPPINGS:
-        - KEY: KEY_CAPSLOCK
-          TAP: KEY_ESC
-          HOLD: KEY_LEFTCTRL
-    '';
-  in {
-    enable = true;
-    plugins = lib.mkForce [pkgs.interception-tools-plugins.dual-function-keys];
-    udevmonConfig = ''
-      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.dual-function-keys}/bin/dual-function-keys -c ${dfkConfig} | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-        DEVICE:
-          NAME: "Unicomp Inc Unicomp R7_2_Mac_10x_Kbrd_v7_47"
-          EVENTS:
-            EV_KEY: [[KEY_CAPSLOCK, KEY_ESC, KEY_LEFTCTRL]]
-    '';
-  };
+  services.interception-tools =
+    let
+      dfkConfig = pkgs.writeText "dual-function-keys.yaml" ''
+        MAPPINGS:
+          - KEY: KEY_CAPSLOCK
+            TAP: KEY_ESC
+            HOLD: KEY_LEFTCTRL
+      '';
+    in
+    {
+      enable = true;
+      plugins = lib.mkForce [ pkgs.interception-tools-plugins.dual-function-keys ];
+      udevmonConfig = ''
+        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.dual-function-keys}/bin/dual-function-keys -c ${dfkConfig} | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+          DEVICE:
+            NAME: "Unicomp Inc Unicomp R7_2_Mac_10x_Kbrd_v7_47"
+            EVENTS:
+              EV_KEY: [[KEY_CAPSLOCK, KEY_ESC, KEY_LEFTCTRL]]
+      '';
+    };
 
   # Configure keymap in X11
   services.xserver = {
@@ -158,9 +160,9 @@
       }
     ];
     extraConfig = ''
-     Defaults:aodhan timestamp_timeout=30
+      Defaults:aodhan timestamp_timeout=30
     '';
-};
+  };
 
   programs.ssh = {
     startAgent = true;
@@ -209,7 +211,7 @@
   ];
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"]; })
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
   virtualisation.docker.enable = true;
@@ -218,14 +220,16 @@
   # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
-    # Forbid root login through SSH.
-    permitRootLogin = "no";
-    # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
+    settings = {
+      # Forbid root login through SSH.
+      PermitRootLogin = "no";
+      # Use keys only. Remove if you want to SSH using password (not recommended)
+      PasswordAuthentication = false;
+    };
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [80 443 3000 6006];
+  networking.firewall.allowedTCPPorts = [ 80 443 3000 6006 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
