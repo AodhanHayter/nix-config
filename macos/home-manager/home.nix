@@ -34,6 +34,7 @@
     httpie
     jid
     jq
+    fd
     karabiner-elements
     mkcert
     prettyping
@@ -57,8 +58,11 @@
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
     nodePackages.diagnostic-languageserver
+    nodePackages.pyright
     sumneko-lua-language-server
     elixir_ls
+    terraform-ls
+    terraform
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {

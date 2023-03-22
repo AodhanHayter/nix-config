@@ -25,6 +25,7 @@ require("lazy").setup({
       vim.cmd([[highlight clear SignColumn]])
     end
   },
+  { "nordtheme/vim" },
   { "numToStr/Comment.nvim", lazy = false, config = true },
   { "windwp/nvim-autopairs", lazy = false, config = true },
   { "tmhedberg/matchit", lazy = false },
@@ -115,7 +116,18 @@ require("lazy").setup({
       vim.g.mkdp_filetypes = { "markdown" }
     end
   },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "folke/lsp-colors.nvim",
+    config = function()
+      require('lsp-colors').setup({
+        Error = "#e26a6a",
+        Warning = "#e0af68",
+        Information = "#0db9d7",
+        Hint = "#10B981"
+      })
+    end
+  }
 })
 
 -- Mappings.
@@ -137,7 +149,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<leader>S', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>st', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader><C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -160,6 +172,12 @@ local lsp_flags = {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require('lspconfig')['tsserver'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
+}
+
+require('lspconfig')['pyright'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities
@@ -211,7 +229,7 @@ require('lspconfig')['marksman'].setup {
 
 local diagnosticls = require("diagnosticls")
 require('lspconfig')['diagnosticls'].setup {
-  filetypes = {unpack(diagnosticls.filetypes)},
+  filetypes = { unpack(diagnosticls.filetypes) },
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -229,4 +247,10 @@ require('lspconfig')['diagnosticls'].setup {
       markdown = "prettier",
     }
   }
+}
+
+require('lspconfig')['terraformls'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
 }
