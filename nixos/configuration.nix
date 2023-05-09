@@ -208,6 +208,7 @@
     pkgs.libsForQt5.bismuth
     gcc_multi
     binutils
+    vlc
   ];
 
   fonts.fonts = with pkgs; [

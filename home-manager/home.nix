@@ -43,6 +43,7 @@
     nodePackages.typescript-language-server
     sumneko-lua-language-server
     elixir_ls
+    insomnia
   ];
 
   home.shellAliases = {
