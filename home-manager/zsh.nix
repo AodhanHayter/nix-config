@@ -14,6 +14,7 @@
       export PAGER="less"
       export GPG_TTY=$(tty)
       export NIX_CONFIG_PATH="$HOME/nix-config/"
+      export PASSWORD_STORE_DIR="$HOME/.password-store"
 
       # allow homebrew packages to be run
       export PATH="$PATH:/opt/homebrew/bin"
