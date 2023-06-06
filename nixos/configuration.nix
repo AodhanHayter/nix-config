@@ -47,7 +47,6 @@
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.interfaces.enp4s0.wakeOnLan.enable = true;
   networking.extraHosts =
     ''
       127.0.0.1 lcl.kyruus.com
