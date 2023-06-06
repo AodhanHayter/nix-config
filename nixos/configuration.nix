@@ -167,6 +167,8 @@
     startAgent = true;
   };
 
+  programs.zsh.enable = true;
+
   users.defaultUserShell = pkgs.zsh;
 
   users.users = {
@@ -220,10 +222,12 @@
   # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
-    # Forbid root login through SSH.
-    permitRootLogin = "no";
-    # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
+    settings = {
+      # Forbid root login through SSH.
+      PermitRootLogin = "no";
+      # Use keys only. Remove if you want to SSH using password (not recommended)
+      PasswordAuthentication = false;
+    };
   };
 
   # Open ports in the firewall.
