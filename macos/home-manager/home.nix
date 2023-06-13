@@ -29,7 +29,6 @@
   };
 
   home.packages = with pkgs; [
-    (nodejs-16_x.override { enableNpm = true; })
     htop
     httpie
     jid
