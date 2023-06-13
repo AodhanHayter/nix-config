@@ -90,6 +90,13 @@
       function aws_login() {
         saml2aws login --session-duration 43200 --username "ahayter@kyruus.com" --duo-mfa-option="Duo Push" --skip-prompt --force --role="arn:aws:iam::206670668379:role/kyruusone-engineer"
       }
+
+      function aws_env() {
+        export AWS_ACCESS_KEY_ID=$(aws configure get default.aws_access_key_id)
+        export AWS_SECRET_ACCESS_KEY=$(aws configure get default.aws_secret_access_key)
+        export AWS_SESSION_TOKEN=$(aws configure get default.aws_session_token)
+        export AWS_SECURITY_TOKEN=$(aws configure get default.aws_security_token)
+      }
     '';
 
     plugins = [

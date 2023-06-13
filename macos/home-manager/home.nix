@@ -48,7 +48,7 @@
     saml2aws
     awscli
     ssm-session-manager-plugin
-    postgresql_12
+    postgresql_13
     docker
     passExtensions.pass-update
     darwin.apple_sdk.frameworks.CoreFoundation
@@ -59,6 +59,7 @@
     nodePackages.bash-language-server
     nodePackages.diagnostic-languageserver
     nodePackages.pyright
+    nodePackages.dockerfile-language-server-nodejs
     sumneko-lua-language-server
     elixir_ls
     terraform-ls

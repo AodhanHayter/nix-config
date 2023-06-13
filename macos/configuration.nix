@@ -1,6 +1,8 @@
 { inputs, lib, config, pkgs, ... }: {
   environment.systemPackages = [
     pkgs.vim
+    pkgs.rustc
+    pkgs.cargo
   ];
 
   services.nix-daemon.enable = true;
@@ -15,7 +17,7 @@
 
   homebrew = {
     enable = true;
-    brews = [ "pgcli" "pyenv" "pyenv-virtualenv" "libpq" "openssl" ];
+    brews = [ "pgcli" "pyenv" "pyenv-virtualenv" "libpq" "openssl" "volta" ];
     casks = [
       "amethyst"
       "raycast"

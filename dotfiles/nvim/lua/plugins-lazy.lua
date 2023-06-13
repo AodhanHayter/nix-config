@@ -25,12 +25,15 @@ require("lazy").setup({
       vim.cmd([[highlight clear SignColumn]])
     end
   },
+  { "rebelot/kanagawa.nvim" },
   { "nordtheme/vim" },
   { "numToStr/Comment.nvim", lazy = false, config = true },
   { "windwp/nvim-autopairs", lazy = false, config = true },
   { "tmhedberg/matchit", lazy = false },
   { "tpope/vim-surround", lazy = false },
   { "tpope/vim-endwise", lazy = false },
+  { "tpope/vim-dadbod" },
+  { "kristijanhusak/vim-dadbod-ui" },
   { "ojroques/nvim-hardline", lazy = false, config = true },
   { "norcalli/nvim-colorizer.lua", lazy = false, config = true },
   { "junegunn/vim-slash", lazy = false },
@@ -237,7 +240,8 @@ require('lspconfig')['diagnosticls'].setup {
     formatters = diagnosticls.formatters,
     filetypes = {
       typescript = "eslint",
-      sh = "shellcheck"
+      sh = "shellcheck",
+      python = { "flake8" }
     },
     formatFiletypes = {
       javascript = "prettier",
@@ -245,11 +249,18 @@ require('lspconfig')['diagnosticls'].setup {
       typescript = "prettier",
       typescriptreact = "prettier",
       markdown = "prettier",
+      python = { "isort", "black" }
     }
   }
 }
 
 require('lspconfig')['terraformls'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require('lspconfig')['dockerls'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
