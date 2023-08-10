@@ -3,8 +3,6 @@
     pkgs.vim
     pkgs.rustc
     pkgs.cargo
-    pkgs.vagrant
-    pkgs.virtualbox
   ];
 
   services.nix-daemon.enable = true;
