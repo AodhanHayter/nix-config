@@ -26,6 +26,8 @@
       "itsycal"
       "docker"
       "adur1990/tap/passformacos"
+      "vagrant"
+      "virtualbox"
     ];
   };
 

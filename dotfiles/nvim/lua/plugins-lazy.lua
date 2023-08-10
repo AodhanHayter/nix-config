@@ -27,17 +27,17 @@ require("lazy").setup({
   },
   { "rebelot/kanagawa.nvim" },
   { "nordtheme/vim" },
-  { "numToStr/Comment.nvim", lazy = false, config = true },
-  { "windwp/nvim-autopairs", lazy = false, config = true },
-  { "tmhedberg/matchit", lazy = false },
-  { "tpope/vim-surround", lazy = false },
-  { "tpope/vim-endwise", lazy = false },
+  { "numToStr/Comment.nvim",       lazy = false, config = true },
+  { "windwp/nvim-autopairs",       lazy = false, config = true },
+  { "tmhedberg/matchit",           lazy = false },
+  { "tpope/vim-surround",          lazy = false },
+  { "tpope/vim-endwise",           lazy = false },
   { "tpope/vim-dadbod" },
   { "kristijanhusak/vim-dadbod-ui" },
-  { "ojroques/nvim-hardline", lazy = false, config = true },
+  { "ojroques/nvim-hardline",      lazy = false, config = true },
   { "norcalli/nvim-colorizer.lua", lazy = false, config = true },
-  { "junegunn/vim-slash", lazy = false },
-  { "sheerun/vim-polyglot", lazy = false },
+  { "junegunn/vim-slash",          lazy = false },
+  { "sheerun/vim-polyglot",        lazy = false },
   { "lithammer/nvim-diagnosticls", lazy = false },
   {
     "nvim-tree/nvim-tree.lua",
@@ -50,9 +50,13 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     tag = "nightly"
   },
-  { "L3MON4D3/LuaSnip", lazy = false, version = "1.2.1",
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = false,
+    version = "1.2.1",
     dependencies = { "rafamadriz/friendly-snippets" },
-    config = function() require("luasnip.loaders.from_vscode").lazy_load() end },
+    config = function() require("luasnip.loaders.from_vscode").lazy_load() end
+  },
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
@@ -111,10 +115,13 @@ require("lazy").setup({
     end
   },
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-  { "lewis6991/gitsigns.nvim", config = true, dependencies = { "nvim-lua/plenary.nvim" } },
+  { "lewis6991/gitsigns.nvim",       config = true,                             dependencies = { "nvim-lua/plenary.nvim" } },
   "tpope/vim-fugitive",
   "ellisonleao/glow.nvim",
-  { "iamcco/markdown-preview.nvim", build = ":call mkdp#util#install()", ft = "markdown",
+  {
+    "iamcco/markdown-preview.nvim",
+    build = ":call mkdp#util#install()",
+    ft = "markdown",
     config = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end
@@ -237,15 +244,20 @@ require('lspconfig')['diagnosticls'].setup {
   flags = lsp_flags,
   capabilities = capabilities,
   init_options = {
+    linters = diagnosticls.linters,
     formatters = diagnosticls.formatters,
     filetypes = {
+      javascript = "eslint",
+      javascriptreact = "eslint",
       typescript = "eslint",
+      typescriptreact = "eslint",
       sh = "shellcheck",
       python = { "flake8" }
     },
     formatFiletypes = {
       javascript = "prettier",
       javascriptreact = "prettier",
+      json = "prettier",
       typescript = "prettier",
       typescriptreact = "prettier",
       markdown = "prettier",
@@ -264,4 +276,10 @@ require('lspconfig')['dockerls'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
+}
+
+require('lspconfig')['rust_analyzer'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
 }
