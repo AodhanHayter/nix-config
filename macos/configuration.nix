@@ -3,6 +3,8 @@
     pkgs.vim
     pkgs.rustc
     pkgs.cargo
+    pkgs.vagrant
+    pkgs.virtualbox
   ];
 
   services.nix-daemon.enable = true;
@@ -26,8 +28,6 @@
       "itsycal"
       "docker"
       "adur1990/tap/passformacos"
-      "vagrant"
-      "virtualbox"
     ];
   };
 
