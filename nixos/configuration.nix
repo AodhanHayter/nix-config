@@ -41,7 +41,10 @@
   };
 
   # Bootloader.
+  boot.loader.timeout = 10;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 120;
+  boot.loader.systemd-boot.consoleMode = "auto";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
@@ -67,6 +70,7 @@
   services.xserver.desktopManager = {
     plasma5 = {
       enable = true;
+      useQtScaling = true;
     };
   };
 
