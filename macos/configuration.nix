@@ -3,6 +3,11 @@
     pkgs.vim
     pkgs.rustc
     pkgs.cargo
+    pkgs.libffi
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.docker-credential-helpers
+    pkgs.colima
   ];
 
   services.nix-daemon.enable = true;
@@ -17,14 +22,13 @@
 
   homebrew = {
     enable = true;
-    brews = [ "pgcli" "pyenv" "pyenv-virtualenv" "libpq" "openssl" "volta" ];
+    brews = [ "pyenv" "pyenv-virtualenv" "libpq" "openssl" ];
     casks = [
       "amethyst"
       "raycast"
       "spotify"
       "brave-browser"
       "itsycal"
-      "docker"
       "adur1990/tap/passformacos"
     ];
   };

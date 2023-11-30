@@ -80,7 +80,7 @@
 
       function pg() {
         if [ $1 ]; then
-          PGSERVICE=$1 /opt/homebrew/Cellar/pgcli/3.5.0/bin/pgcli
+          PGSERVICE=$1 $HOME/.nix-profile/bin/pgcli
         else
           echo 'A valid service name is required for this function'
         fi

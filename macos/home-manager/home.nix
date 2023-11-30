@@ -22,6 +22,10 @@
     homeDirectory = "/Users/ahayter";
   };
 
+ programs.zsh.sessionVariables = {
+    DOCKER_HOST = "unix:///Users/ahayter/.colima/docker.sock";
+  };
+
   home.shellAliases = {
     hm = "home-manager switch -b backup --flake $NIX_CONFIG_PATH";
     rebuild = "darwin-rebuild switch --flake $NIX_CONFIG_PATH";
@@ -29,40 +33,40 @@
   };
 
   home.packages = with pkgs; [
+    awscli
+    circleci-cli
+    darwin.apple_sdk.frameworks.CoreFoundation
+    darwin.apple_sdk.frameworks.CoreServices
+    elixir_ls
+    fd
+    fnm
     htop
     httpie
     jid
     jq
-    fd
     karabiner-elements
-    mkcert
-    prettyping
-    ripgrep
-    rnix-lsp
-    shellcheck
-    shfmt
-    tree
-    tealdeer
-    fnm
-    saml2aws
-    awscli
-    ssm-session-manager-plugin
-    postgresql_13
-    docker
-    passExtensions.pass-update
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.CoreServices
-    circleci-cli
     marksman
-    nodePackages.typescript-language-server
+    mkcert
     nodePackages.bash-language-server
     nodePackages.diagnostic-languageserver
-    nodePackages.pyright
     nodePackages.dockerfile-language-server-nodejs
+    nodePackages.pyright
+    nodePackages.typescript-language-server
+    passExtensions.pass-update
+    pgcli
+    prettyping
+    pwgen
+    ripgrep
+    rnix-lsp
+    saml2aws
+    shellcheck
+    shfmt
+    ssm-session-manager-plugin
     sumneko-lua-language-server
-    elixir_ls
-    terraform-ls
+    tealdeer
     terraform
+    terraform-ls
+    tree
   ];
 
   home.activation = lib.mkIf pkgs.stdenv.isDarwin {

@@ -57,6 +57,14 @@
 
     extraConfig = {
       add.interactive.useBuiltin = false;
+
+      fetch = {
+        prune = true;
+      };
+
+      push = {
+        default = "current";
+      };
     };
   };
 }

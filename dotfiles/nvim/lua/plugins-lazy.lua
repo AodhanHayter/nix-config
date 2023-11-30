@@ -39,6 +39,7 @@ require("lazy").setup({
   { "junegunn/vim-slash",          lazy = false },
   { "sheerun/vim-polyglot",        lazy = false },
   { "lithammer/nvim-diagnosticls", lazy = false },
+  { "github/copilot.vim" },
   {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
