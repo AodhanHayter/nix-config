@@ -57,6 +57,7 @@
     prettyping
     pwgen
     ripgrep
+    rmtrash
     rnix-lsp
     saml2aws
     shellcheck

@@ -39,7 +39,40 @@ require("lazy").setup({
   { "junegunn/vim-slash",          lazy = false },
   { "sheerun/vim-polyglot",        lazy = false },
   { "lithammer/nvim-diagnosticls", lazy = false },
-  { "github/copilot.vim" },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "elixir-tools/elixir-tools.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local elixir = require("elixir")
+      local elixirls = require("elixir.elixirls")
+
+      elixir.setup({
+        nextls = { enable = true },
+        credo = {},
+        elixirls = {
+          enable = true,
+          settings = elixirls.settings {
+            dialyzerEnabled = false,
+            enableTestLenses = false,
+          }
+        }
+      })
+    end,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
@@ -107,6 +140,7 @@ require("lazy").setup({
           end, { "i", "s" })
         }),
         sources = cmp.config.sources({
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" }
         }, {
