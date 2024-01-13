@@ -43,6 +43,7 @@
     sumneko-lua-language-server
     elixir_ls
     insomnia
+    discord
   ];
 
   home.shellAliases = {
