@@ -214,6 +214,7 @@
     gcc_multi
     binutils
     vlc
+    protonvpn-gui
   ];
 
   fonts.fonts = with pkgs; [

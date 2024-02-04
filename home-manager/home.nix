@@ -44,6 +44,7 @@
     elixir_ls
     insomnia
     discord
+    google-chrome
   ];
 
   home.shellAliases = {
