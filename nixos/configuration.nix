@@ -18,9 +18,6 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
-  # Remove if you wish to disable unfree packages for your system
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
