@@ -1,6 +1,8 @@
 # holds common home-manager config between both linux and macos
 
-{ inputs, lib, config, pkgs, ...}: {
+{ inputs, lib, config, pkgs, ... }: {
+
+  news.display = "show";
 
   home.shellAliases = {
     cat = "bat";
